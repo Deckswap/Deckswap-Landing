@@ -68,6 +68,10 @@
     appearance: none;
     /* Don't set height here - let specific classes handle it */
   }
+  input[type="checkbox"] {
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -555,8 +559,19 @@
   flex-shrink: 0;
   width: 14px;
   height: 14px;
+  min-width: 14px;
+  min-height: 14px;
   accent-color: var(--red);
   cursor: pointer;
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+  background-color: var(--bg-3);
+  border: 1px solid var(--line-2);
+  border-radius: 3px;
+}
+.gdpr-check:checked {
+  background-color: var(--red);
+  border-color: var(--red);
 }
 .gdpr-check.err {
   outline: 1px solid var(--red);
