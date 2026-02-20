@@ -63,6 +63,10 @@
   }
   input {
     font: inherit;
+    font-size: 16px; /* Prevent iOS auto-zoom on focus */
+    -webkit-appearance: none;
+    appearance: none;
+    /* Don't set height here - let specific classes handle it */
   }
 }
 
@@ -265,6 +269,7 @@
   flex-direction: column;
   gap: 10px;
   margin-bottom: 14px;
+  width: 100%;
 }
 @media (min-width: 480px) {
   .waitlist-form {
@@ -275,18 +280,38 @@
 
 .waitlist-input {
   flex: 1;
-  height: 46px;
+  height: 50px !important; /* Force height - increased for better mobile touch target */
+  min-height: 50px; /* Ensure minimum height */
   background: var(--bg-2);
   border: 1px solid var(--line-2);
   border-radius: var(--r-lg);
-  padding: 0 16px;
-  font-size: 14px;
+  padding: 0 18px;
+  font-size: 17px; /* Larger on mobile for better readability */
   color: var(--ink-1);
   outline: none;
   transition: all var(--ease);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%; /* Prevent overflow on mobile */
+  box-sizing: border-box;
+  line-height: 1.5;
+  margin: 0; /* Reset any margins */
 }
 .waitlist-input::placeholder {
   color: var(--ink-4);
+  font-size: 17px; /* Match input font-size for placeholder */
+  opacity: 1; /* Ensure placeholder is visible */
+}
+@media (min-width: 480px) {
+  .waitlist-input {
+    height: 46px !important;
+    min-height: 46px !important;
+    padding: 0 16px;
+    font-size: 14px; /* Smaller on desktop */
+  }
+  .waitlist-input::placeholder {
+    font-size: 14px;
+  }
 }
 .waitlist-input:focus {
   border-color: var(--line-3);
@@ -298,12 +323,12 @@
 }
 
 .waitlist-btn {
-  height: 46px;
+  height: 50px; /* Match input height on mobile */
   padding: 0 22px;
   background: var(--red);
   color: white;
   border-radius: var(--r-lg);
-  font-size: 14px;
+  font-size: 16px; /* Larger on mobile for better readability */
   font-weight: 600;
   white-space: nowrap;
   display: flex;
@@ -312,6 +337,12 @@
   gap: 7px;
   transition: all var(--ease);
   flex-shrink: 0;
+}
+@media (min-width: 480px) {
+  .waitlist-btn {
+    height: 46px;
+    font-size: 14px; /* Smaller on desktop */
+  }
 }
 .waitlist-btn:hover {
   background: var(--red-hover);

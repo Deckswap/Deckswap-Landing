@@ -113,17 +113,23 @@ export default function Home() {
                                         className={`waitlist-input ${
                                             emailErr ? 'err' : ''
                                         }`}
-                                        style={
-                                            shake
+                                        style={{
+                                            height: '50px',
+                                            minHeight: '50px',
+                                            ...(shake
                                                 ? {
                                                       animation:
                                                           'shake 0.35s ease',
                                                   }
-                                                : undefined
-                                        }
+                                                : {}),
+                                        }}
                                         type="email"
+                                        inputMode="email"
                                         placeholder="your@email.com"
                                         autoComplete="email"
+                                        autoCapitalize="none"
+                                        autoCorrect="off"
+                                        spellCheck="false"
                                         value={email}
                                         onChange={(e) => {
                                             setEmail(e.target.value);
@@ -172,9 +178,10 @@ export default function Home() {
                                         }}
                                     />
                                     <span>
-                                        I agree to receive a one-time launch
-                                        notification from Deckswap. No spam,
-                                        unsubscribe anytime. See our{' '}
+                                        I agree to receive updates from
+                                        Deckswap, including our launch and
+                                        future news. No spam, unsubscribe
+                                        anytime. See our{' '}
                                         <Link
                                             href="/privacy"
                                             className="gdpr-link"
